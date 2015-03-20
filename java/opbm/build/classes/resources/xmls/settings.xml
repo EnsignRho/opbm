@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opbm>
+	<settings>
+		<benchmarks>
+			<debugger>No</debugger>
+			<singlestep>No</singlestep>
+			<hud>
+				<visible>Yes</visible>
+				<translucency>0.5</translucency>
+				<debuginfo>Yes</debuginfo>
+			</hud>
+			<retry>
+				<enabled>Yes</enabled>
+				<attempts>5</attempts>
+			</retry>
+			<stopIfFailure>Yes</stopIfFailure>
+			<rebootBeforeEachPass>Yes</rebootBeforeEachPass>
+			<uninstallAfterFailure>Yes</uninstallAfterFailure>
+			<runSpinups>No</runSpinups>
+		</benchmarks>
+		<resultsviewer>
+			<cvinred>0.03</cvinred>
+		</resultsviewer>
+		<skin>developer</skin>
+	</settings>
+</opbm>

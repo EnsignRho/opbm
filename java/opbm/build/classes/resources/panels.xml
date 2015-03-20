@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opbm>
+	<panels>
+		<left name="Main" bgcolor="ffffff">
+			<navigation>
+				<text>Quit</text>
+				<command>quit</command>
+				<tooltip>Exit OPBM</tooltip>
+			</navigation>
+			<navigation>
+				<text>Skin</text>
+				<command>simple</command>
+				<tooltip>Switch to the simple skinned user interface</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text>Run Modules:</text>
+			</heading>
+			<menu>
+				<text>Atoms</text>
+				<command p1="Execute Atoms">edit</command>
+				<tooltip>Record a benchmark run for an Atom.</tooltip>
+			</menu>
+			<menu>
+				<text>Molecules</text>
+				<command p1="Execute Molecules">edit</command>
+				<tooltip>Record a benchmark run for a Molecule.</tooltip>
+			</menu>
+			<menu>
+				<text>Scenarios</text>
+				<command p1="Execute Scenarios">edit</command>
+				<tooltip>Record a benchmark run for a Scenario.</tooltip>
+			</menu>
+			<menu>
+				<text>Suites</text>
+				<command p1="Execute Suites">edit</command>
+				<tooltip>Record a benchmark run for a Suite.</tooltip>
+			</menu>
+			<spacer/>
+			<heading>
+				<text>Full Benchmarks:</text>
+			</heading>
+			<menu>
+				<text>Trial Run</text>
+				<command>trial_run</command>
+				<tooltip>Run a trial run benchmark.</tooltip>
+			</menu>
+			<menu>
+				<text>Official Run</text>
+				<command>official_run</command>
+				<tooltip>Run an official run benchmark.</tooltip>
+			</menu>
+			<spacer/>
+			<heading>
+				<text>Shortcuts:</text>
+			</heading>
+			<menu>
+				<text>Results Viewer</text>
+				<command>prompt_run_results_viewer</command>
+				<tooltip>Loads the most recent results file into the Results Viewer.</tooltip>
+			</menu>
+			<menu>
+				<text>Results Viewer (Choose)</text>
+				<command>prompt_run_results_viewer</command>
+				<tooltip>Prompts the user for a results file to load into the Results Viewer.</tooltip>
+			</menu>
+			<menu>
+				<text>Gather Debug Info</text>
+				<command>gather_debug_info</command>
+				<tooltip>Load system data into a debugInfo.xml file for email or public posting to/for the developer</tooltip>
+			</menu>
+			<spacer/>
+			<heading>
+				<text>Maintenance:</text>
+			</heading>
+			<menu>
+				<text fgcolor="7f6f4f">Script Definition</text>
+				<command p1="Edit Scripts">leftpanel</command>
+				<tooltip>Setup scripts by adding/editing atoms, molecules, scenarios and suites.</tooltip>
+			</menu>
+			<menu>
+				<text fgcolor="7f6f4f">UI Settings</text>
+				<command p1="UI Settings">leftpanel</command>
+				<tooltip>User interface settings</tooltip>
+			</menu>
+			<spacer/>
+			<text>Click on the links above to access</text>
+			<text>sub-menus, functions and OPBM.</text>
+			<text>components.</text>
+		</left>
+
+		<left name="Edit Scripts" bgcolor="fff4e2">
+			<navigation>
+				<text>Back</text>
+				<command>back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text>Home</text>
+				<command>home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text fgcolor="7f7f3f">Editing:</text>
+			</heading>
+			<menu>
+				<text>Atoms</text>
+				<command p1="atoms">edit</command>
+				<tooltip></tooltip>
+			</menu>
+			<menu>
+				<text>Molecules</text>
+				<command p1="molecules">edit</command>
+				<tooltip></tooltip>
+			</menu>
+			<menu>
+				<text>Scenarios</text>
+				<command p1="scenarios">edit</command>
+				<tooltip></tooltip>
+			</menu>
+			<menu>
+				<text>Suites</text>
+				<command p1="suites">edit</command>
+				<tooltip></tooltip>
+			</menu>
+			<spacer/>
+			<heading>
+				<text fgcolor="7f7f3f">Maintenance:</text>
+			</heading>
+			<menu>
+				<text>View or Edit raw XML files</text>
+				<command p1="XML File Viewing">leftpanel</command>
+				<tooltip></tooltip>
+			</menu>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<heading>
+				<text fgcolor="d0d0a0">Internal:</text>
+			</heading>
+			<menu>
+				<text fgcolor="d0d0ff">Internal Editing</text>
+				<command p1="Internal Editing">leftpanel</command>
+				<tooltip>This option is only for use only by the OPBM Java/C++ Developer, not for regular OPBM users.</tooltip>
+			</menu>
+		</left>
+
+		<left name="Internal Editing" bgcolor="fff4e2">
+			<navigation>
+				<text>Back</text>
+				<command>back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text>Home</text>
+				<command>home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text fgcolor="7f7f3f">Internal:</text>
+			</heading>
+			<menu>
+				<text fgcolor="#4f0000">Flow Control*</text>
+				<command p1="flows">edit</command>
+				<tooltip></tooltip>
+			</menu>
+			<menu>
+				<text fgcolor="#4f0000">Command Abstracts*</text>
+				<command p1="abstracts">edit</command>
+				<tooltip></tooltip>
+			</menu>
+			<spacer/>
+			<text fgcolor="#4f0000">*Editing is VERY dangerous</text>
+			<text fgcolor="#4f0000">(ampersand)nbsp;(ampersand)nbsp;on these two options!</text>
+			<spacer/>
+			<spacer/>
+			<spacer/>
+			<heading>
+				<text fgcolor="7f7f3f">OPBM Developer:</text>
+			</heading>
+			<menu>
+				<text fgcolor="#4f0000">Compute Baselines</text>
+				<command>compute_results_averages</command>
+				<tooltip>Takes a manifest.xml file and computes averages for every worklet.  Used to update scoringBaseline.au3</tooltip>
+			</menu>
+
+		</left>
+
+		<left name="XML File Viewing" bgcolor="fff4e2">
+			<navigation>
+				<text>Back</text>
+				<command>back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text>Home</text>
+				<command>home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text fgcolor="7f7f3f">View Raw Files:</text>
+			</heading>
+			<menu>
+				<text>View Panels.xml</text>
+				<command p1="ro:panels.xml">rawedit</command>
+				<tooltip>View raw contents of panels.xml file, used to control menu navigation.</tooltip>
+			</menu>
+			<menu>
+				<text>View Edits.xml</text>
+				<command p1="ro:edits.xml">rawedit</command>
+				<tooltip>View raw contents of edits.xml file, used to control data input.</tooltip>
+			</menu>
+			<menu>
+				<text>View Scripts.xml</text>
+				<command p1="ro:scripts.xml">rawedit</command>
+				<tooltip>View raw contents of scripts.xml file, used to store all scripts and related data.</tooltip>
+			</menu>
+			<spacer/>
+			<menu>
+				<text>Switch to Edit Mode</text>
+				<command p1="XML File Maintenance">leftpanel</command>
+				<tooltip>Switch to XML File Editing</tooltip>
+			</menu>
+		</left>
+
+		<left name="XML File Maintenance" bgcolor="ff0000">
+			<navigation>
+				<text fgcolor="ffff7f">Back</text>
+				<command>back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text fgcolor="ffff7f">Home</text>
+				<command>home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text fgcolor="000000">Warning!</text>
+			</heading>
+			<heading>
+				<text fgcolor="000000">Choose Raw File:</text>
+			</heading>
+			<spacer/>
+			<menu>
+				<text fgcolor="ffffff">Edit Panels.xml</text>
+				<command p1="panels.xml">rawedit</command>
+				<tooltip>WARNING! Editing panels.xml in raw mode may cause damage to the file. Use normal OPBM edits instead.</tooltip>
+			</menu>
+			<menu>
+				<text fgcolor="ffffff">Edit Edits.xml</text>
+				<command p1="edits.xml">rawedit</command>
+				<tooltip>WARNING! Editing edits.xml in raw mode may cause damage to the file. Use normal OPBM edits instead.</tooltip>
+			</menu>
+			<menu>
+				<text fgcolor="ffffff">Edit Scripts.xml</text>
+				<command p1="scripts.xml">rawedit</command>
+				<tooltip>WARNING! Editing scripts.xml in raw mode may cause damage to the file. Use normal OPBM edits instead.</tooltip>
+			</menu>
+			<spacer/>
+			<menu>
+				<text fgcolor="ffff7f">Back to View Mode</text>
+				<command>back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</menu>
+			<spacer/>
+			<spacer/>
+			<text fgcolor="#4f0000">Editing raw files is dangerous.</text>
+			<text fgcolor="#4f0000">$u$$b$Please$/b$$/u$ make a backup before</text>
+			<text fgcolor="#4f0000">continuing.</text>
+		</left>
+
+		<left name="Raw Edit" bgcolor="ffff00">
+			<navigation>
+				<text fgcolor="0000ff">Back</text>
+				<command>rawedit_back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text fgcolor="0000ff">Home</text>
+				<command>rawedit_home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text fgcolor="000000">Warning!</text>
+			</heading>
+			<heading>
+				<text fgcolor="000000">Editing a Raw File!</text>
+			</heading>
+			<spacer/>
+			<menu>
+				<text fgcolor="0000ff">Save</text>
+				<command>rawedit_save</command>
+				<tooltip>Immediately save current contents to disk, overwriting prior version.</tooltip>
+			</menu>
+			<menu>
+				<text fgcolor="0000ff">Save and Close</text>
+				<command>rawedit_save_and_close</command>
+				<tooltip>Immediately save current contents to disk, overwriting prior version, and return to $previous_panel$.</tooltip>
+			</menu>
+			<menu>
+				<text fgcolor="0000ff">Close</text>
+				<command>rawedit_close</command>
+				<tooltip>Ignore any changes and close the file, return to $previous_panel$.</tooltip>
+			</menu>
+			<menu>
+				<text fgcolor="0000ff">Reload</text>
+				<command>rawedit_reload</command>
+				<tooltip>Reload disk file, abandoning any changes made to active file in memory.</tooltip>
+			</menu>
+			<spacer/>
+			<spacer/>
+			<text fgcolor="#4f4f00">Editing raw files is dangerous.</text>
+			<text fgcolor="#4f4f00">$u$$b$Please$/b$$/u$ make a backup before</text>
+			<text fgcolor="#4f4f00">saving changes.</text>
+		</left>
+
+		<left name="Raw View" bgcolor="fff4e2">
+			<navigation>
+				<text>Back</text>
+				<command>rawedit_back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text>Home</text>
+				<command>rawedit_home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text fgcolor="7f7f3f">Viewing Raw File</text>
+			</heading>
+			<menu>
+				<text>Close</text>
+				<command>rawedit_close</command>
+				<tooltip>Close the view, return to $previous_panel$.</tooltip>
+			</menu>
+		</left>
+
+		<left name="Edit Flows" bgcolor="ff0000">
+			<navigation>
+				<text fgcolor="0000ff">Back</text>
+				<command>edit_back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text fgcolor="0000ff">Home</text>
+				<command>edit_home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text fgcolor="000000">Flow Control</text>
+			</heading>
+			<spacer/>
+			<spacer/>
+			<text fgcolor="ffffff">***DO NOT***</text>
+			<text fgcolor="ffffff">edit any of these records</text>
+			<text fgcolor="ffffff">unless you know exactly</text>
+			<text fgcolor="ffffff">what you are doing!</text>
+		</left>
+
+		<left name="Edit Abstracts" bgcolor="ff0000">
+			<navigation>
+				<text fgcolor="0000ff">Back</text>
+				<command>edit_back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text fgcolor="0000ff">Home</text>
+				<command>edit_home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text fgcolor="000000">Abstracts</text>
+			</heading>
+			<spacer/>
+			<spacer/>
+			<text fgcolor="ffffff">***DO NOT***</text>
+			<text fgcolor="ffffff">edit any of these records</text>
+			<text fgcolor="ffffff">unless you know exactly</text>
+			<text fgcolor="ffffff">what you are doing!</text>
+		</left>
+
+		<left name="Edit Atoms" bgcolor="fff4e2">
+			<navigation>
+				<text>Back</text>
+				<command>edit_back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text>Home</text>
+				<command>edit_home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text fgcolor="7f7f3f">Atoms</text>
+			</heading>
+			<spacer/>
+			<text>Atoms are single operations. They</text>
+			<text>conduct a single task, and capture</text>
+			<text>results at that level.</text>
+		</left>
+
+		<left name="Edit Molecules" bgcolor="fff4e2">
+			<navigation>
+				<text>Back</text>
+				<command>edit_back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text>Home</text>
+				<command>edit_home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text fgcolor="7f7f3f">Molecules</text>
+			</heading>
+			<spacer/>
+			<text>Molecules are groups of related</text>
+			<text>operations, conducting a larger</text>
+			<text>capture of results.</text>
+		</left>
+
+		<left name="Edit Scenarios" bgcolor="fff4e2">
+			<navigation>
+				<text>Back</text>
+				<command>edit_back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text>Home</text>
+				<command>edit_home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text fgcolor="7f7f3f">Scenarios</text>
+			</heading>
+			<spacer/>
+			<text>Scenarios are groups of related</text>
+			<text>tests, conducting a large, data</text>
+			<text>set captured across a type of</text>
+			<text>workload.</text>
+		</left>
+
+		<left name="Edit Suites" bgcolor="fff4e2">
+			<navigation>
+				<text>Back</text>
+				<command>edit_back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text>Home</text>
+				<command>edit_home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text fgcolor="7f7f3f">Suites</text>
+			</heading>
+			<spacer/>
+			<text>Suites are groups of tests used</text>
+			<text>to accomplish a particular goal,</text>
+			<text>such as testing a type of workload,</text>
+			<text>or a range of workloads.</text>
+		</left>
+
+		<left name="Execute Atoms" bgcolor="ffffff">
+			<navigation>
+				<text>Back</text>
+				<command>edit_back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text>Home</text>
+				<command>edit_home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text>Run Atoms</text>
+			</heading>
+			<spacer/>
+			<text>1) Select item in left Listing</text>
+			<text>2) Double-click to run sequence</text>
+			<text></text>
+			<text></text>
+			<text>$b$Custom Compilation:</text>
+			<text>Create a custom compilation by</text>
+			<text>highlighting an item in the left</text>
+			<text>listing, and clicking the + button</text>
+			<text>to add it. It will be inserted</text>
+			<text>after the highlighted entry in</text>
+			<text>the compilation listbox.</text>
+		</left>
+
+		<left name="Execute Molecules" bgcolor="ffffff">
+			<navigation>
+				<text>Back</text>
+				<command>edit_back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text>Home</text>
+				<command>edit_home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text>Run Molecules</text>
+			</heading>
+			<spacer/>
+			<text>1) Select item in left Listing</text>
+			<text>2) Double-click to run sequence</text>
+		</left>
+
+		<left name="Execute Scenarios" bgcolor="ffffff">
+			<navigation>
+				<text>Back</text>
+				<command>edit_back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text>Home</text>
+				<command>edit_home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text>Run Scenarios</text>
+			</heading>
+			<spacer/>
+			<text>1) Select item in left Listing</text>
+			<text>2) Double-click to run sequence</text>
+		</left>
+
+		<left name="Execute Suites" bgcolor="ffffff">
+			<navigation>
+				<text>Back</text>
+				<command>edit_back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text>Home</text>
+				<command>edit_home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text>Run Suites</text>
+			</heading>
+			<spacer/>
+			<text>1) Select item in left Listing</text>
+			<text>2) Double-click to run sequence</text>
+		</left>
+
+		<left name="UI Settings" bgcolor="fff4e2">
+			<navigation>
+				<text>Back</text>
+				<command>edit_back</command>
+				<tooltip>Return to $previous_panel$</tooltip>
+			</navigation>
+			<navigation>
+				<text>Home</text>
+				<command>edit_home</command>
+				<tooltip>Return to $home_panel$</tooltip>
+			</navigation>
+			<spacer/>
+			<heading>
+				<text>HUD</text>
+			</heading>
+			<menu>
+				<text fgcolor="$debug_info_color$">Debug Info?  $debug_info$</text>
+				<command>toggle_debug_info</command>
+				<tooltip>Debug Information shows up on the HUD at the bottom four lines. They can be hidden to make the HUD smaller and cleaner.</tooltip>
+			</menu>
+			<menu>
+				<text fgcolor="$hud_color$">Show HUD?  $hud_translucency$</text>
+				<command>toggle_hud</command>
+				<tooltip>HUD options allow 25% translucency, 50%, 75%, 100%, or to be turned completely off.</tooltip>
+			</menu>
+			<spacer/>
+			<heading>
+				<text>Benchmarks</text>
+			</heading>
+			<menu>
+				<text fgcolor="$retry_color$">Retry Attempts: $retry_attempts$</text>
+				<command>toggle_retry_attempts</command>
+				<tooltip>Click to cycle through valid retry attempts range of 0-10 retries before failure is reported.</tooltip>
+			</menu>
+			<menu>
+				<text fgcolor="$halt_on_error_color$">Halt on Errors?  $halt_on_error$</text>
+				<command>toggle_halt_on_error</command>
+				<tooltip>Should errors cause the benchmark execution to cease?</tooltip>
+			</menu>
+			<menu>
+				<text fgcolor="$run_spinups_color$">Run Spinups?  $run_spinups$</text>
+				<command>toggle_run_spinups</command>
+				<tooltip>Should OPBM run spinup code after each reboot?</tooltip>
+			</menu>
+			<menu>
+				<text fgcolor="$uninstall_after_failure_color$">Uninstall on failure?  $uninstall_after_failure$</text>
+				<command>toggle_uninstall_after_failure</command>
+				<tooltip>Should a run failure cause the uninstall atoms to run?</tooltip>
+			</menu>
+			<spacer/>
+			<heading>
+				<text>Results Viewer</text>
+			</heading>
+			<menu>
+				<text>Results Viewer CV:  $results_viewer_cv_percent$</text>
+				<command>set_results_viewer_cv</command>
+				<tooltip>What's the threshhold for highlighted display in the Results Viewer CV column?  (Default is 0.03, or 3%)</tooltip>
+			</menu>
+		</left>
+
+	</panels>
+</opbm>

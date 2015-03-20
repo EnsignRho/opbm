@@ -1,0 +1,1447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opbm>
+	<scriptdata>
+		<templates>
+			<flow>
+				<level1>
+					<flow name="New Flow"></flow>
+				</level1>
+				<level2>
+					<variables></variables>
+				</level2>
+			</flow>
+			<atom>
+				<level1>
+					<atom name="New Atom" shortname=""></atom>
+				</level1>
+				<level2>
+					<abstract name="New Executable" sourcename="execute">
+						<options></options>
+					</abstract>
+				</level2>
+			</atom>
+			<molecule>
+				<level1>
+					<molecule name="New Molecule" shortname=""></molecule>
+				</level1>
+				<level2>
+					<atom name="New Atom" shortname="" sourcename="New Atom"></atom>
+				</level2>
+			</molecule>
+			<scenario>
+				<level1>
+					<scenario name="New Scenario" shortname=""></scenario>
+				</level1>
+				<level2>
+					<molecule name="New Molecule" shortname="" sourcename="New Molecule"></molecule>
+				</level2>
+			</scenario>
+			<suite>
+				<level1>
+					<suite name="New Suite" shortname=""></suite>
+				</level1>
+				<level2>
+					<scenario name="New Scenario" shortname="" sourcename="New Scenario"></scenario>
+				</level2>
+			</suite>
+		</templates>
+		<flows>
+			<flow name="call">
+				<variables>{(colon)function, FUNCTION(colon)}</variables>
+			</flow>
+			<flow name="function">
+				<variables>{(colon)function, FUNCTION name(colon)}</variables>
+			</flow>
+			<flow name="functionEnd">
+				<variables></variables>
+			</flow>
+			<flow name="return">
+				<variables></variables>
+			</flow>
+			<flow name="goto">0
+				<variables>{(colon)label, LABEL(colon)}</variables>
+			</flow>
+			<flow name="label">
+				<variables>{(colon)label, LABEL name(colon)}</variables>
+			</flow>
+			<flow name="switch">
+				<variables>{(colon)variable, VARIABLE(colon)}</variables>
+			</flow>
+			<flow name="case">
+				<variables>{(colon)value, VALUE or VARIABLE(colon)}</variables>
+			</flow>
+			<flow name="break">
+				<variables></variables>
+			</flow>
+			<flow name="default">
+				<variables></variables>
+			</flow>
+			<flow name="switchEnd">
+				<variables></variables>
+			</flow>
+			<flow name="do">
+				<variables></variables>
+			</flow>
+			<flow name="until">
+				<variables>{(colon)value1, Left-side VALUE(colon)} {(colon)comparator, Logic(colon)} {(colon)value2, Right-side VALUE(colon)}</variables>
+			</flow>
+			<flow name="while">
+				<variables>{(colon)value1, Left-side VALUE(colon)} {(colon)comparator, Logic(colon)} {(colon)value2, Right-side VALUE(colon)}</variables>
+			</flow>
+			<flow name="whileEnd">
+				<variables></variables>
+			</flow>
+			<flow name="for">
+				<variables>{(colon)variable, Variable name(colon)} {(colon)startvalue, START or variable name(colon)} {(colon)finishvalue, END or variable name(colon)} {(colon)stepvalue, STEP or variable name(colon)}</variables>
+			</flow>
+			<flow name="next">
+				<variables></variables>
+			</flow>
+			<flow name="if">
+				<variables>{(colon)value1, Left-side VALUE(colon)} {(colon)comparator, Logic(colon)} {(colon)value2, Right-side VALUE(colon)}</variables>
+			</flow>
+			<flow name="elseif">
+				<variables>{(colon)value1, Left-side VALUE(colon)} {(colon)comparator, Logic(colon)} {(colon)value2, Right-side VALUE(colon)}</variables>
+			</flow>
+			<flow name="else">
+				<variables></variables>
+			</flow>
+			<flow name="ifEnd">
+				<variables></variables>
+			</flow>
+			<flow name="log">
+				<variables>{(colon)message, MESSAGE to log(colon)}</variables>
+			</flow>
+			<flow name="throw">
+				<variables>{(colon)message, ERROR MESSAGE to throw(colon)}</variables>
+			</flow>
+			<flow name="debug">
+				<variables>{(colon)message, DEBUG MESSAGE to show(colon)}</variables>
+			</flow>
+			<flow name="quit">
+				<variables>{(colon)value, EXIT value(colon)}</variables>
+			</flow>
+			<flow name="prompt">
+				<variables>{(colon)message, MESSAGE to prompt user with(colon)}</variables>
+			</flow>
+			<flow name="optionDuo">
+				<variables>{(colon)message, MESSAGE to prompt user with(colon)} {(colon)option1, OPTION #1 Prompt(colon)} {(colon)option2, OPTION #2 Prompt(colon)}</variables>
+			</flow>
+			<flow name="onOption1">
+				<variables>{(colon)label, Label if option #1 chosen(colon)}</variables>
+			</flow>
+			<flow name="onOption2">
+				<variables>{(colon)label, Label if option #2 chosen(colon)}</variables>
+			</flow>
+			<flow name="variable">
+				<variables>{(colon)name, NAME(colon)} {(colon)value, VALUE(colon)}</variables>
+			</flow>
+			<flow name="++">
+				<variables>{(colon)name, NAME(colon)}</variables>
+			</flow>
+			<flow name="--">
+				<variables>{(colon)name, NAME(colon)}</variables>
+			</flow>
+			<flow name="+=">
+				<variables>{(colon)name, NAME(colon)} {(colon)value, VALUE(colon)}</variables>
+			</flow>
+			<flow name="-=">
+				<variables>{(colon)name, NAME(colon)} {(colon)value, VALUE(colon)}</variables>
+			</flow>
+		</flows>
+		<abstracts>
+			<abstract name="execute">
+				<logical>execute</logical>
+				<real>{(colon)executable, Full executable path(colon)}</real>
+				<variables>{(colon)retryEnabled, Should this atom retry on failure? (Overrides settings.xml)(colon)} {(colon)retryAttempts, Retry how many times? (Overrides settings.xml)(colon)} {(colon)stopIfFailure, Should this atom stop on a failure? (Overrides settings.xml)(colon)} {(colon)atomOnFailure, Run these atoms on failure(colon)} {(colon)atomBeforeRuns, Run these atoms before Trial or Official Runs(colon)} {(colon)atomAfterRuns, Run these atoms after Trial or Official Runs(colon)} {(colon)atomOnSpinup, Run these spinup atoms after the machine reboots(colon)} {(colon)atomCheckConflicts, Run these atoms to find and enumerate conflicts(colon)} {(colon)runOnlyOnOfficialRun, Run this atom only on an Official Run?(colon)}</variables>
+			</abstract>
+			<abstract name="executeParams">
+				<logical>execute_params</logical>
+				<real>{(colon)executable, Full executable path(colon)} {(colon)p1, First parameter(colon)} {(colon)p2, Second parameter(colon)} {(colon)p3, Third parameter(colon)} {(colon)p4, Fourth parameter(colon)} {(colon)p5, Fifth parameter(colon)} {(colon)p6, Sixth parameter(colon)} {(colon)p7, Seventh parameter(colon)} {(colon)p8, Eighth parameter(colon)} {(colon)p9, Ninth parameter(colon)} {(colon)p10, Tenth parameter(colon)}</real>
+				<variables>{(colon)retryEnabled, Should this atom retry on failure? (Overrides settings.xml)(colon)} {(colon)retryAttempts, Retry how many times? (Overrides settings.xml)(colon)} {(colon)stopIfFailure, Should this atom stop on a failure? (Overrides settings.xml)(colon)} {(colon)atomOnFailure, Run these atoms on failure(colon)} {(colon)atomBeforeRuns, Run these atoms before Trial or Official Runs(colon)} {(colon)atomAfterRuns, Run these atoms after Trial or Official Runs(colon)} {(colon)atomOnSpinup, Run these spinup atoms after the machine reboots(colon)} {(colon)atomCheckConflicts, Run these atoms to find and enumerate conflicts(colon)} {(colon)runOnlyOnOfficialRun, Run this atom only on an Official Run?(colon)}</variables>
+			</abstract>
+			<abstract name="rebootAndTerminate">
+				<logical>reboot_and_terminate</logical>
+				<real></real>
+			</abstract>
+			<abstract name="rebootAndContinue">
+				<logical>reboot_and_continue</logical>
+				<real></real>
+			</abstract>
+		</abstracts>
+		<atoms>
+			<atom name="Install AviSynth" shortname="InstallAviSynth">
+				<abstract name="Install AviSynth" shortname="InstallAviSynth" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns>Uninstall AviSynth</atomBeforeRuns>
+						<atomOnFailure>Uninstall AviSynth</atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\x264hd\installAviSynth.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Uninstall AviSynth" shortname="UninstallAviSynth">
+				<abstract name="Uninstall AviSynth" shortname="UninstallAviSynth" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\x264hd\uninstallAviSynth.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="x264 HD benchmark" shortname="x264hd">
+				<abstract name="x264 HD benchmark" shortname="x264hd" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\x264hd\x264hdBench.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Excel General" shortname="ExcelG">
+				<abstract name="Excel 2010 General" shortname="ExcelG" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts>Excel Conflict Check</atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\office2010\excel\excelGeneral.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="PowerPoint Open" shortname="PPoint">
+				<abstract name="Open PowerPoint 2010" shortname="Open" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts>PowerPoint Conflict Check</atomCheckConflicts>
+						<atomOnSpinup>Launch and Close PowerPoint</atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\office2010\powerpoint\powerpointOpen.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="PowerPoint War" shortname="PPoint">
+				<abstract name="Open PowerPoint 2010 War" shortname="War" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\office2010\powerpoint\powerpointWar.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="PowerPoint Close" shortname="PPoint">
+				<abstract name="Close PowerPoint 2010" shortname="Close" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\office2010\powerpoint\powerpointClose.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Publisher Open" shortname="Pub">
+				<abstract name="Open Publisher 2010" shortname="OpenP" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts>Publisher Conflict Check</atomCheckConflicts>
+						<atomOnSpinup>Launch and Close Publisher</atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\office2010\publisher\publisherOpen.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Publisher Hedge" shortname="Pub">
+				<abstract name="Open Publisher 2010 HEDGE Flyer" shortname="Hedge" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\office2010\publisher\publisherHedge.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Publisher Close" shortname="Pub">
+				<abstract name="Close Publisher 2010" shortname="CloseP" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\office2010\publisher\publisherClose.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Access Open" shortname="Access">
+				<abstract name="Open Microsoft Access" shortname="OpenA" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts>Access Conflict Check</atomCheckConflicts>
+						<atomOnSpinup>Launch and Close Access</atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\office2010\access\accessOpen.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Access Earthquake" shortname="Access">
+				<abstract name="Access earthquake database" shortname="Quake" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\office2010\access\accessEarthquake.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Access Close" shortname="Access">
+				<abstract name="Close Microsoft Access" shortname="CloseA" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\office2010\access\accessClose.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Excel Heat" shortname="Excel">
+				<abstract name="Surface Heat Simulation" shortname="Heat" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts>Excel Conflict Check</atomCheckConflicts>
+						<atomOnSpinup>Launch and Close Excel</atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\office2010\excel\heat.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Word Alice" shortname="Word">
+				<abstract name="Alice in Wonderland" shortname="Alice" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts>Word Conflict Check</atomCheckConflicts>
+						<atomOnSpinup>Launch and Close Word</atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\office2010\word\alice.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Word Open" shortname="Word">
+				<abstract name="Open Microsoft Word" shortname="OpenW" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts>Word Conflict Check</atomCheckConflicts>
+						<atomOnSpinup>Launch and Close Word</atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\office2010\word\wordOpen.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Word Island" shortname="Word">
+				<abstract name="Microsoft Word Island" shortname="WordI" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\office2010\word\wordIsland.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Word Close" shortname="Word">
+				<abstract name="Close Microsoft Word" shortname="CloseW" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\office2010\word\closeWord.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Install 7zip" shortname="7zip">
+				<abstract name="Install 7zip" shortname="Install" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns>Uninstall 7zip</atomBeforeRuns>
+						<atomOnFailure>Uninstall 7zip</atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\7zip\install\7zipInstall.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="7zip Run Test" shortname="7zip">
+				<abstract name="7zip Run Test" shortname="Run" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\7zip\runtest\7zipRunTest.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="File I/O Run Test" shortname="fileio">
+				<abstract name="File I/O Run Test" shortname="fileio" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<retryEnabled></retryEnabled>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<executable>..\autoIT\fileio\copy\fileioTest.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Uninstall 7zip" shortname="7zip">
+				<abstract name="Uninstall 7zip" shortname="Uninstall" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\7zip\uninstall\7zipUninstall.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Install Opera" shortname="Opera">
+				<abstract name="Install Opera" shortname="Install" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns>Uninstall Opera</atomBeforeRuns>
+						<atomOnFailure>Uninstall Opera</atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\opera\install\operaInstall.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Uninstall Opera" shortname="Opera">
+				<abstract name="Uninstall Opera" shortname="Uninstall" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\opera\uninstall\operaUninstall.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Opera SunSpider" shortname="Opera">
+				<abstract name="Opera SunSpider" shortname="Spider" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\opera\spider\operaSpider.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Opera Kraken" shortname="Opera">
+				<abstract name="Opera Kraken" shortname="Kraken" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\opera\kraken\operaKraken.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Opera Google V8" shortname="Opera">
+				<abstract name="Opera Google V8" shortname="V8" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\opera\googlev8\operaGoogleV8.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Install Safari" shortname="Safari">
+				<abstract name="Install Safari" shortname="Install" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns>Uninstall Safari</atomBeforeRuns>
+						<atomOnFailure>Uninstall Safari</atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\safari\install\safariInstall.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Uninstall Safari" shortname="Safari">
+				<abstract name="Uninstall Safari" shortname="Uninstall" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\safari\uninstall\safariUninstall.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Safari SunSpider" shortname="Safari">
+				<abstract name="Safari SunSpider" shortname="Spider" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\safari\spider\safariSpider.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Safari Kraken" shortname="Safari">
+				<abstract name="Safari Kraken" shortname="Kraken" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\safari\kraken\safariKraken.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Safari Google V8" shortname="Safari">
+				<abstract name="Safari Google V8" shortname="V8" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\safari\googlev8\safariGoogleV8.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="IE SunSpider" shortname="IE9">
+				<abstract name="IE SunSpider" shortname="Spider" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts>IE9 Conflict Check</atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\ie\spider\ieSpider.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="IE Kraken" shortname="IE9">
+				<abstract name="IE Kraken" shortname="Kraken" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts>IE9 Conflict Check</atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\ie\kraken\ieKraken.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="IE Google V8" shortname="IE9">
+				<abstract name="IE Google V8" shortname="V8" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts>IE9 Conflict Check</atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\ie\googlev8\ieGoogleV8.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Install Chrome" shortname="Chrome">
+				<abstract name="Install Chrome" shortname="Install" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns>Uninstall Chrome</atomBeforeRuns>
+						<atomOnFailure>Uninstall Chrome</atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\chrome\install\chromeInstall.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Uninstall Chrome" shortname="Chrome">
+				<abstract name="Uninstall Chrome" shortname="Uninstall" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\chrome\uninstall\chromeUninstall.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Chrome SunSpider" shortname="Chrome">
+				<abstract name="Chrome SunSpider" shortname="Spider" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\chrome\spider\chromeSpider.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Chrome Kraken" shortname="Chrome">
+				<abstract name="Chrome Kraken" shortname="Kraken" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\chrome\kraken\chromeKraken.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Chrome Google V8" shortname="Chrome">
+				<abstract name="Chrome Google V8" shortname="V8" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\chrome\googlev8\chromeGoogleV8.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Install Firefox" shortname="Firefox">
+				<abstract name="Install Firefox" shortname="Install" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns>Uninstall Firefox</atomBeforeRuns>
+						<atomOnFailure>Uninstall Firefox</atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\firefox\install\firefoxInstall.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Uninstall Firefox" shortname="Firefox">
+				<abstract name="Uninstall Firefox" shortname="Uninstall" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\firefox\uninstall\firefoxUninstall.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Firefox SunSpider" shortname="Firefox">
+				<abstract name="Firefox SunSpider" shortname="Spider" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\firefox\spider\firefoxSpider.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Firefox Kraken" shortname="Firefox">
+				<abstract name="Firefox Kraken" shortname="Kraken" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\firefox\kraken\firefoxKraken.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Firefox Google V8" shortname="Firefox">
+				<abstract name="Firefox Google V8" shortname="V8" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\firefox\googlev8\firefoxGoogleV8.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Install Acrobat Reader" shortname="Acrobat">
+				<abstract name="Install Acrobat Reader" shortname="Install" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns>Uninstall Acrobat Reader</atomBeforeRuns>
+						<atomOnFailure>Uninstall Acrobat Reader</atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\acrobatReader\install\acrobatReaderInstall.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Uninstall Acrobat Reader" shortname="Acrobat">
+				<abstract name="Uninstall Acrobat Reader" shortname="Uninstall" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\acrobatReader\uninstall\acrobatReaderUninstall.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Reboot And Only Launch OPBM" shortname="rebootl">
+				<abstract name="Reboot And Only Launch OPBM" shortname="reboot" sourcename="rebootAndTerminate"></abstract>
+			</atom>
+			<atom name="Reboot, Launch OPBM and Restart Benchmark" shortname="rcontinue">
+				<abstract name="Reboot, Launch OPBM and Restart Benchmark" shortname="rcontinue" sourcename="rebootAndContinue">
+					<options></options>
+				</abstract>
+			</atom>
+			<atom name="Simulate Failure" shortname="Sim">
+				<abstract name="Simulate Failure" shortname="Fail" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\tests\failure\failure.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Simulate Success" shortname="Sim">
+				<abstract name="Simulate success" shortname="Succeed" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\tests\success\success.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Spinup Pausing 60 Seconds" shortname="Spinup">
+				<abstract name="Spinup Pause 60 Seconds" shortname="Spinup" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\spinup\spinup\spinup.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Launch and Close PowerPoint" shortname="SpinPP">
+				<abstract name="Spinup" shortname="Spinup" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\spinup\powerpoint\launchAndClose.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Launch and Close Publisher" shortname="SpinPub">
+				<abstract name="Spinup" shortname="Spinup" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\spinup\publisher\launchAndClose.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Launch and Close Access" shortname="SpinAcc">
+				<abstract name="Spinup" shortname="Spinup" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\spinup\access\launchAndClose.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Launch and Close Word" shortname="SpinWord">
+				<abstract name="Spinup" shortname="Spinup" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\spinup\word\launchAndClose.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Launch and Close Excel" shortname="SpinXl">
+				<abstract name="Spinup" shortname="Spinup" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\spinup\excel\launchAndClose.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Chrome Conflict Check" shortname="ChromeCC">
+				<abstract name="Chrome Conflict Check" shortname="ChromeCC" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\checkConflicts\chrome\chromeMustBeInstalled.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="IE9 Conflict Check" shortname="IE9CC">
+				<abstract name="IE9 Conflict Check" shortname="IE9CC" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\checkConflicts\ie9\ie9MustBeInstalled.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Opera Conflict Check" shortname="OperaCC">
+				<abstract name="Opera Conflict Check" shortname="OperaCC" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\checkConflicts\opera\operaMustBeInstalled.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Access Conflict Check" shortname="AccessCC">
+				<abstract name="Access Conflict Check" shortname="AccessCC" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\checkConflicts\office2010\accessMustBeInstalled.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Excel Conflict Check" shortname="ExcelCC">
+				<abstract name="Excel Conflict Check" shortname="ExcelCC" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\checkConflicts\office2010\excelMustBeInstalled.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="PowerPoint Conflict Check" shortname="PPCC">
+				<abstract name="PowerPoint Conflict Check" shortname="PPCC" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\checkConflicts\office2010\powerpointMustBeInstalled.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Publisher Conflict Check" shortname="PubCC">
+				<abstract name="Publisher Conflict Check" shortname="PubCC" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\checkConflicts\office2010\publisherMustBeInstalled.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Word Conflict Check" shortname="WordCC">
+				<abstract name="Word Conflict Check" shortname="WordCC" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\checkConflicts\office2010\wordMustBeInstalled.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Acrobat Reader Conflict Check" shortname="AReaderCC">
+				<abstract name="Acrobat Reader Conflict Check" shortname="AReaderCC" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\checkConflicts\acrobatReader\acrobatReaderMustBeInstalled.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Official Run Startup Settle Down" shortname="orsettle">
+				<abstract name="Official Run Startup Settle Down" shortname="orsettle" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun>Yes</runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\opbm\internal\startupSettleDown.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Official Run Reboot Time" shortname="ortime">
+				<abstract name="Official Run Reboot Time" shortname="ortime" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun>Yes</runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\opbm\internal\rebootTime.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Standalone Startup Settle Down" shortname="ssettle">
+				<abstract name="System Reboot" shortname="sreboot" sourcename="rebootAndContinue">
+					<options></options>
+				</abstract>
+				<abstract name="Standalone Startup Settle Down" shortname="ssettle" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\opbm\internal\startupSettleDown.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Standalone Reboot Time" shortname="stime">
+				<abstract name="System Reboot" shortname="sreboot" sourcename="rebootAndContinue">
+					<options></options>
+				</abstract>
+				<abstract name="Standalone Reboot Time" shortname="stime" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\opbm\internal\rebootTime.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Java Sort" shortname="JSort">
+				<abstract name="Java Sort" shortname="JSort" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\java\compute\javaComputeSort.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Java String" shortname="JString">
+				<abstract name="Java String" shortname="JString" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\java\compute\javaComputeString.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Java Security" shortname="JSecurity">
+				<abstract name="Java Security" shortname="JSecurity" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\java\compute\javaComputeSecurity.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Java Stream" shortname="JStream">
+				<abstract name="Java Stream" shortname="JStream" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\java\compute\javaComputeStream.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+			<atom name="Java Compute" shortname="JCompute">
+				<abstract name="Java Compute" shortname="JCompute" sourcename="execute">
+					<options>
+						<runOnlyOnOfficialRun></runOnlyOnOfficialRun>
+						<atomCheckConflicts></atomCheckConflicts>
+						<atomOnSpinup></atomOnSpinup>
+						<atomAfterRuns></atomAfterRuns>
+						<atomBeforeRuns></atomBeforeRuns>
+						<atomOnFailure></atomOnFailure>
+						<stopIfFailure></stopIfFailure>
+						<retryAttempts></retryAttempts>
+						<retryEnabled></retryEnabled>
+						<executable>..\autoIT\java\compute\javaCompute.exe</executable>
+					</options>
+				</abstract>
+			</atom>
+		</atoms>
+		<molecules>
+			<molecule name="Bootup Data" shortname="bootdata">
+				<atom name="Official Run Startup Settle Down" shortname="settle" sourcename="Official Run Startup Settle Down"></atom>
+				<atom name="Official Run Reboot Time" shortname="time" sourcename="Official Run Reboot Time"></atom>
+			</molecule>
+			<molecule name="Install Applications" shortname="Install">
+				<atom name="Install 7zip" shortname="7zip" sourcename="Install 7zip"></atom>
+				<atom name="Install Acrobat Reader" shortname="Acrobat" sourcename="Install Acrobat Reader"></atom>
+				<atom name="Install Firefox" shortname="Firefox" sourcename="Install Firefox"></atom>
+				<atom name="Install Safari" shortname="Safari" sourcename="Install Safari"></atom>
+				<atom name="Install Chrome" shortname="Chrome" sourcename="Install Chrome"></atom>
+				<atom name="Install Opera" shortname="Opera" sourcename="Install Opera"></atom>
+				<atom name="Install AviSynth" shortname="InstallAviSynth" sourcename="Install AviSynth"></atom>
+			</molecule>
+			<molecule name="Presentation" shortname="Ppoint">
+				<atom name="PowerPoint Open" shortname="Open" sourcename="PowerPoint Open"></atom>
+				<atom name="PowerPoint War" shortname="War" sourcename="PowerPoint War"></atom>
+				<atom name="PowerPoint Close" shortname="Close" sourcename="PowerPoint Close"></atom>
+			</molecule>
+			<molecule name="Database" shortname="Access">
+				<atom name="Access Open" shortname="Open" sourcename="Access Open"></atom>
+				<atom name="Access Earthquake" shortname="Quake" sourcename="Access Earthquake"></atom>
+				<atom name="Access Close" shortname="Close" sourcename="Access Close"></atom>
+			</molecule>
+			<molecule name="Publisher" shortname="Publisher">
+				<atom name="Publisher Open" shortname="Open" sourcename="Publisher Open"></atom>
+				<atom name="Publisher HEDGE" shortname="Hedge" sourcename="Publisher HEDGE"></atom>
+				<atom name="Publisher Close" shortname="Close" sourcename="Publisher Close"></atom>
+			</molecule>
+			<molecule name="Spreadsheet" shortname="Excel">
+				<atom name="Excel Heat" shortname="Heat" sourcename="Excel Heat"></atom>
+				<atom name="Excel General" shortname="ExcelG" sourcename="Excel General"></atom>
+			</molecule>
+			<molecule name="JavaScript" shortname="Browser">
+				<atom name="Chrome SunSpider" shortname="CSpider" sourcename="Chrome SunSpider"></atom>
+				<atom name="Chrome Google V8" shortname="CV8" sourcename="Chrome Google V8"></atom>
+				<atom name="Firefox SunSpider" shortname="FSpider" sourcename="Firefox SunSpider"></atom>
+				<atom name="Firefox Google V8" shortname="FV8" sourcename="Firefox Google V8"></atom>
+				<atom name="IE SunSpider" shortname="ISpider" sourcename="IE SunSpider"></atom>
+				<atom name="IE Google V8" shortname="IV8" sourcename="IE Google V8"></atom>
+				<atom name="Opera SunSpider" shortname="OSpider" sourcename="Opera SunSpider"></atom>
+				<atom name="Opera Google V8" shortname="OV8" sourcename="Opera Google V8"></atom>
+				<atom name="Safari SunSpider" shortname="SSpider" sourcename="Safari SunSpider"></atom>
+				<atom name="Safari Google V8" shortname="SV8" sourcename="Safari Google V8"></atom>
+			</molecule>
+			<molecule name="Java" shortname="Java">
+				<atom name="Java Sort" shortname="JSort" sourcename="Java Sort"></atom>
+				<atom name="Java Security" shortname="JSecurity" sourcename="Java Security"></atom>
+				<atom name="Java Stream" shortname="JStream" sourcename="Java Stream"></atom>
+			</molecule>
+			<molecule name="File Operations" shortname="File">
+				<atom name="File I/O" shortname="fileio" sourcename="File I/O Run Test"></atom>
+				<atom name="7zip Run Test" shortname="7zip" sourcename="7zip Run Test"></atom>
+			</molecule>
+			<molecule name="Uninstall Applications" shortname="Uninstall">
+				<atom name="Uninstall 7zip" shortname="7zip" sourcename="Uninstall 7zip"></atom>
+				<atom name="Uninstall Acrobat Reader" shortname="Acrobat" sourcename="Uninstall Acrobat Reader"></atom>
+				<atom name="Uninstall Firefox" shortname="Firefox" sourcename="Uninstall Firefox"></atom>
+				<atom name="Uninstall Safari" shortname="Safari" sourcename="Uninstall Safari"></atom>
+				<atom name="Uninstall Chrome" shortname="Chrome" sourcename="Uninstall Chrome"></atom>
+				<atom name="Uninstall Opera" shortname="Opera" sourcename="Uninstall Opera"></atom>
+				<atom name="Uninstall AviSynth" shortname="UninstallAviSynth" sourcename="Uninstall AviSynth"></atom>
+			</molecule>
+			<molecule name="Video" shortname="Video">
+				<atom name="x264 HD benchmark" shortname="x264hd" sourcename="x264 HD benchmark"></atom>
+			</molecule>
+			<molecule name="Word Processing" shortname="Word">
+				<atom name="Word Alice" shortname="Alice" sourcename="Word Alice"></atom>
+				<atom name="Word Open" shortname="OpenW" sourcename="Word Open"></atom>
+				<atom name="Word Island" shortname="OpenI" sourcename="Word Island"></atom>
+				<atom name="Word Close" shortname="CloseW" sourcename="Word Close"></atom>
+			</molecule>
+		</molecules>
+		<scenarios>
+			<scenario name="OPBM" shortname="OPBM">
+				<molecule name="Bootup Data" shortname="bootdata" sourcename="Bootup Data"></molecule>
+				<molecule name="Install Applications" shortname="Install" sourcename="Install Applications"></molecule>
+				<molecule name="Presentation" shortname="Present" sourcename="Presentation"></molecule>
+				<molecule name="Database" shortname="Data" sourcename="Database"></molecule>
+				<molecule name="Publisher" shortname="Pub" sourcename="Publisher"></molecule>
+				<molecule name="Spreadsheet" shortname="Excel" sourcename="Spreadsheet"></molecule>
+				<molecule name="JavaScript" shortname="Browser" sourcename="JavaScript"></molecule>
+				<molecule name="Java" shortname="Java" sourcename="Java"></molecule>
+				<molecule name="File Operations" shortname="File" sourcename="File Operations"></molecule>
+				<molecule name="Video" shortname="Video" sourcename="Video"></molecule>
+				<molecule name="Word Processing" shortname="Word" sourcename="Word Processing"></molecule>
+				<molecule name="Uninstall Applications" shortname="Uninstall" sourcename="Uninstall Applications"></molecule>
+			</scenario>
+		</scenarios>
+		<suites></suites>
+	</scriptdata>
+</opbm>

@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opbm>
+<!-- rawedits define full file displays, simply loaded in and viewed or edited, like a text editor. -->
+	<rawedits>
+		<comment>All rawedit items are read-write by default.</comment>
+		<rawedit name="edits.xml">
+			<precommand p1="Raw Edit">leftpanel</precommand>
+			<filename>$edits.xml$</filename>
+			<tooltip>Editing(colon) $edits.xml$</tooltip>
+			<postcommand></postcommand>
+		</rawedit>
+		<rawedit name="panels.xml">
+			<precommand p1="Raw Edit">leftpanel</precommand>
+			<filename>$panels.xml$</filename>
+			<tooltip>Editing(colon) $panels.xml$</tooltip>
+		</rawedit>
+		<rawedit name="scripts.xml">
+			<precommand p1="Raw Edit">leftpanel</precommand>
+			<filename>$scripts.xml$</filename>
+			<tooltip>Editing(colon) $scripts.xml$</tooltip>
+		</rawedit>
+		<comment>The following are viewing items, which are read-only raw edits.</comment>
+		<rawedit name="ro(colon)edits.xml" readonly="true">
+			<precommand p1="Raw View">leftpanel</precommand>
+			<filename>$edits.xml$</filename>
+			<tooltip>Viewing(colon) $edits.xml$</tooltip>
+		</rawedit>
+		<rawedit name="ro(colon)panels.xml" readonly="true">
+			<precommand p1="Raw View">leftpanel</precommand>
+			<filename>$panels.xml$</filename>
+			<tooltip>Viewing(colon) $panels.xml$</tooltip>
+		</rawedit>
+		<rawedit name="ro(colon)scripts.xml" readonly="true">
+			<precommand p1="Raw View">leftpanel</precommand>
+			<filename>$scripts.xml$</filename>
+			<tooltip>Viewing(colon) $scripts.xml$</tooltip>
+		</rawedit>
+	</rawedits>
+
+	<edits>
+		<edit name="flows">
+			<precommand p1="Edit Flows">leftpanel</precommand>
+			<listbox zoom="main">
+				<add>listbox_add</add>
+				<delete>listbox_delete</delete>
+				<clone>listbox_clone</clone>
+				<up>listbox_move_up</up>
+				<down>listbox_move_down</down>
+				<source>opbm.scriptdata.flows.flow</source>
+				<foreach>flow</foreach>
+				<listby p1="#name"/>
+				<newRecordPattern>
+					<flow name="New Flow">
+						<variables>{(colon)example, Description of variable input field(colon)}</variables>
+					</flow>
+				</newRecordPattern>
+			</listbox>
+			<label zoom="main" text="Flow Control Directive Name(colon)"/>
+			<textbox readonly="yes" zoom="main" width="200" field="#name"/>
+			<vspacer zoom="main" height="10"/>
+			<label zoom="main" text="Variable Prompts(colon)"/>
+			<editbox readonly="yes" zoom="main" field="variables"/>
+		</edit>
+
+		<edit name="abstracts">
+			<precommand p1="Edit Abstracts">leftpanel</precommand>
+			<listbox zoom="main">
+				<add>listbox_add</add>
+				<delete>listbox_delete</delete>
+				<clone>listbox_clone</clone>
+				<up>listbox_move_up</up>
+				<down>listbox_move_down</down>
+				<source>opbm.scriptdata.abstracts.abstract</source>
+				<foreach>abstract</foreach>
+				<listby p1="#name"/>
+				<newRecordPattern>
+					<abstract name="New Abstract">
+						<logical>name</logical>
+						<real>{(colon)name, Description of the name entry(colon)}</real>
+						<variables>{(colon)field1, Description of variable input field(colon)} {(colon)retryAttempts, Retry how many times? (Overrides settings.xml)(colon)} {(colon)stopIfFailure, Should this atom stop on a failure? (Overrides settings.xml)(colon)}</variables>
+					</abstract>
+				</newRecordPattern>
+			</listbox>
+			<label zoom="main" text="Abstraction Name / Description(colon)"/>
+			<textbox readonly="yes" zoom="main" field="#name"/>
+			<vspacer zoom="main" height="10"/>
+			<label zoom="main" text="OPBM Command(colon)"/>
+			<textbox readonly="yes" zoom="main" width="350" field="logical"/>
+			<vspacer zoom="main" height="10"/>
+			<label zoom="main" text="OPBM Variable Fields(colon)"/>
+			<editbox readonly="yes" zoom="main" height="max" field="real"/>
+		</edit>
+
+		<edit name="atoms">
+			<precommand p1="Edit Atoms">leftpanel</precommand>
+			<label width="250" text="Atom Name/Description(colon)"/>
+			<textbox width="250" field="#name"/>
+			<label width="250" text="Short Name(colon)"/>
+			<textbox width="100" field="#shortname"/>
+			<label width="250" text="Atom Listing(colon)"/>
+			<listbox name="atom">
+				<delete>listbox_delete</delete>
+				<clone>listbox_clone</clone>
+				<up>listbox_move_up</up>
+				<down>listbox_move_down</down>
+				<onselect p1="elements">lookupbox_update</onselect>
+				<source>opbm.scriptdata.atoms.atom</source>
+				<template>opbm.scriptdata.templates.atom</template>
+				<foreach>atom</foreach>
+				<listby p1="#name"/>
+			</listbox>
+			<label width="250" text="Operation Name/Description(colon)"/>
+			<textbox width="250" field="elements.#name"/>
+			<label width="250" text="Short Name(colon)"/>
+			<textbox width="100" field="elements.#shortname"/>
+			<label width="250" text="Sequence of Operations(colon)"/>
+			<lookupbox name="elements" autoupdate="no" height="max">
+				<subtract>lookupbox_subtract</subtract>
+				<clone>lookupbox_clone</clone>
+				<up>lookupbox_move_up</up>
+				<down>lookupbox_move_down</down>
+				<source relativeto="atom">[flow,abstract]</source>
+				<foreach>[flow,abstract]</foreach>
+				<relativeedits p1="flow=flows" p2="abstract=abstracts"/>
+				<relativeoptions p1="flow=opbm.scriptdata.flows.flow" p2="abstract=opbm.scriptdata.abstracts.abstract"/>
+				<listby p1="#name"/>
+			</lookupbox>
+			<newcolumn/>
+			<label text="Command Abstracts(colon)"/>
+			<lookupbox name="abstracts" autoupdate="no" height="max">
+				<add p1="atom" p2="elements" p3="abstracts">lookupbox_add</add>
+				<source>opbm.scriptdata.abstracts.abstract</source>
+				<foreach>abstract</foreach>
+				<listby p1="#name"/>
+			</lookupbox>
+			<newcolumn/>
+			<options relativeto="elements"/>
+		</edit>
+
+		<edit name="molecules">
+			<precommand p1="Edit Molecules">leftpanel</precommand>
+			<label text="Molecule Name/Description(colon)"/>
+			<textbox width="250" field="#name"/>
+			<label width="250" text="Short Name(colon)"/>
+			<textbox width="100" field="#shortname"/>
+			<label text="Molecules(colon)" width="250"/>
+			<listbox name="molecule">
+				<delete>listbox_delete</delete>
+				<clone>listbox_clone</clone>
+				<up>listbox_move_up</up>
+				<down>listbox_move_down</down>
+				<onselect p1="elements">lookupbox_update</onselect>
+				<source>opbm.scriptdata.molecules.molecule</source>
+				<template>opbm.scriptdata.templates.molecule</template>
+				<foreach>molecule</foreach>
+				<listby p1="#name"/>
+			</listbox>
+			<label text="Sequence Name/Description(colon)"/>
+			<textbox width="250" field="elements.#name"/>
+			<label width="250" text="Short Name(colon)"/>
+			<textbox width="100" field="elements.#shortname"/>
+			<label text="Sequence of Operations(colon)" width="250"/>
+			<lookupbox name="elements" autoupdate="no" height="max">
+				<subtract>lookupbox_subtract</subtract>
+				<clone>lookupbox_clone</clone>
+				<up>lookupbox_move_up</up>
+				<down>lookupbox_move_down</down>
+				<source relativeto="molecule">[flow,abstract,atom]</source>
+				<relativeedits p1="flow=flows" p2="abstract=abstracts" p3="atom=atoms"/>
+				<relativeoptions p1="flow=opbm.scriptdata.flows.flow" p2="abstract=opbm.scriptdata.abstracts.abstract" p3="atom=opbm.scripdata.atoms.atom"/>
+				<foreach>[flow,abstract,atom]</foreach>
+				<listby p1="#name"/>
+			</lookupbox>
+			<newcolumn/>
+			<label text="Command Abstracts(colon)"/>
+			<lookupbox name="abstracts" autoupdate="no" height="max">
+				<add p1="molecule" p2="elements" p3="abstracts">lookupbox_add</add>
+				<source>opbm.scriptdata.abstracts.abstract</source>
+				<foreach>abstract</foreach>
+				<listby p1="#name"/>
+			</lookupbox>
+			<newcolumn/>
+			<label text="Atoms(colon)"/>
+			<lookupbox name="atoms" autoupdate="no">
+				<add p1="molecule" p2="elements" p3="atoms">lookupbox_add</add>
+				<source>opbm.scriptdata.atoms.atom</source>
+				<foreach>atom</foreach>
+				<listby p1="#name"/>
+			</lookupbox>
+			<newcolumn/>
+			<options relativeto="elements"/>
+		</edit>
+
+		<edit name="scenarios">
+			<precommand p1="Edit Scenarios">leftpanel</precommand>
+			<label text="Scenario Name/Description(colon)"/>
+			<textbox width="250" field="#name"/>
+			<label width="250" text="Short Name(colon)"/>
+			<textbox width="100" field="#shortname"/>
+			<label text="Scenarios(colon)" width="250"/>
+			<listbox name="scenario">
+				<delete>listbox_delete</delete>
+				<clone>listbox_clone</clone>
+				<up>listbox_move_up</up>
+				<down>listbox_move_down</down>
+				<onselect p1="elements">lookupbox_update</onselect>
+				<source>opbm.scriptdata.scenarios.scenario</source>
+				<template>opbm.scriptdata.templates.scenario</template>
+				<foreach>scenario</foreach>
+				<listby p1="#name"/>
+			</listbox>
+			<label text="Operation Name/Description(colon)"/>
+			<textbox width="250" field="elements.#name"/>
+			<label width="250" text="Short Name(colon)"/>
+			<textbox width="100" field="elements.#shortname"/>
+			<label text="Sequence of Operations(colon)" width="250"/>
+			<lookupbox name="elements" autoupdate="no" height="max">
+				<subtract>lookupbox_subtract</subtract>
+				<clone>lookupbox_clone</clone>
+				<up>lookupbox_move_up</up>
+				<down>lookupbox_move_down</down>
+				<source relativeto="scenario">[flow,abstract,atom,molecule]</source>
+				<foreach>[flow,abstract,atom,molecule]</foreach>
+				<relativeedits p1="flow=flows" p2="abstract=abstracts" p3="atom=atoms" p4="molecule=molecules"/>
+				<relativeoptions p1="flow=opbm.scriptdata.flows.flow" p2="abstract=opbm.scriptdata.abstracts.abstract" p3="atom=opbm.scripdata.atoms.atom" p4="molecule=opbm.scriptdata.molecules.molecule"/>
+				<listby p1="#name"/>
+			</lookupbox>
+			<newcolumn/>
+			<label text="Command Abstracts(colon)"/>
+			<lookupbox name="abstracts" autoupdate="no" height="max">
+				<add p1="scenario" p2="elements" p3="abstracts">lookupbox_add</add>
+				<source>opbm.scriptdata.abstracts.abstract</source>
+				<foreach>abstract</foreach>
+				<listby p1="#name"/>
+			</lookupbox>
+			<newcolumn/>
+			<label text="Atoms(colon)"/>
+			<lookupbox name="atoms" autoupdate="no">
+				<add p1="scenario" p2="elements" p3="atoms">lookupbox_add</add>
+				<source>opbm.scriptdata.atoms.atom</source>
+				<foreach>atom</foreach>
+				<listby p1="#name"/>
+			</lookupbox>
+			<label text="Molecules(colon)"/>
+			<lookupbox name="molecules" autoupdate="no">
+				<add p1="scenario" p2="elements" p3="molecules">lookupbox_add</add>
+				<source>opbm.scriptdata.molecules.molecule</source>
+				<foreach>molecule</foreach>
+				<listby p1="#name"/>
+			</lookupbox>
+			<newcolumn/>
+			<options relativeto="elements"/>
+		</edit>
+
+		<edit name="suites">
+			<precommand p1="Edit Suites">leftpanel</precommand>
+			<label text="Suite Name/Description(colon)"/>
+			<textbox width="250" field="#name"/>
+			<label width="250" text="Short Name(colon)"/>
+			<textbox width="100" field="#shortname"/>
+			<label text="Suites(colon)" width="250"/>
+			<listbox name="suite">
+				<delete>listbox_delete</delete>
+				<clone>listbox_clone</clone>
+				<up>listbox_move_up</up>
+				<down>listbox_move_down</down>
+				<onselect p1="elements">lookupbox_update</onselect>
+				<source>opbm.scriptdata.suites.suite</source>
+				<template>opbm.scriptdata.templates.suite</template>
+				<foreach>suite</foreach>
+				<listby p1="#name"/>
+			</listbox>
+			<label text="Operation Name/Description(colon)"/>
+			<textbox width="250" field="elements.#name"/>
+			<label width="250" text="Short Name(colon)"/>
+			<textbox width="100" field="elements.#shortname"/>
+			<label text="Sequence of Operations(colon)" width="250"/>
+			<lookupbox name="elements" autoupdate="no" height="max">
+				<subtract>lookupbox_subtract</subtract>
+				<clone>lookupbox_clone</clone>
+				<up>lookupbox_move_up</up>
+				<down>lookupbox_move_down</down>
+				<source relativeto="suite">[flow,abstract,atom,molecule,scenario]</source>
+				<foreach>[flow,abstract,atom,molecule,scenario]</foreach>
+				<relativeedits p1="flow=flows" p2="abstract=abstracts" p3="atom=atoms" p4="molecule=molecules" p5="scenario=scenarios"/>
+				<relativeoptions p1="flow=opbm.scriptdata.flows.flow" p2="abstract=opbm.scriptdata.abstracts.abstract" p3="atom=opbm.scripdata.atoms.atom" p4="molecule=opbm.scriptdata.molecules.molecule" p5="scenario=opbm.scriptdata.scenarios.scenario"/>
+				<listby p1="#name"/>
+			</lookupbox>
+			<newcolumn/>
+			<label text="Command Abstracts(colon)"/>
+			<lookupbox name="abstracts" autoupdate="no" height="max">
+				<add p1="suite" p2="elements" p3="abstracts">lookupbox_add</add>
+				<source>opbm.scriptdata.abstracts.abstract</source>
+				<foreach>abstract</foreach>
+				<listby p1="#name"/>
+			</lookupbox>
+			<newcolumn/>
+			<label text="Atoms(colon)"/>
+			<lookupbox name="atoms" autoupdate="no">
+				<add p1="suite" p2="elements" p3="atoms">lookupbox_add</add>
+				<source>opbm.scriptdata.atoms.atom</source>
+				<foreach>atom</foreach>
+				<listby p1="#name"/>
+			</lookupbox>
+			<label text="Molecules(colon)"/>
+			<lookupbox name="molecules" autoupdate="no">
+				<add p1="suite" p2="elements" p3="molecules">lookupbox_add</add>
+				<source>opbm.scriptdata.molecules.molecule</source>
+				<foreach>molecule</foreach>
+				<listby p1="#name"/>
+			</lookupbox>
+			<label text="Scenarios(colon)"/>
+			<lookupbox name="scenarios" autoupdate="no">
+				<add p1="suite" p2="elements" p3="scenarios">lookupbox_add</add>
+				<source>opbm.scriptdata.scenarios.scenario</source>
+				<foreach>scenario</foreach>
+				<listby p1="#name"/>
+			</lookupbox>
+			<newcolumn/>
+			<options relativeto="elements"/>
+		</edit>
+
+		<edit name="execute atoms">
+			<precommand p1="Execute Atoms">leftpanel</precommand>
+			<label width="250" text="Atom Description(colon)"/>
+			<textbox readonly="yes" width="250" field="#name"/>
+			<label width="250" text="Atom Listing(colon)"/>
+			<listbox name="atom">
+				<onselect p1="elements">lookupbox_update</onselect>
+				<dblclick p1="atom">run_atom_sequence_1</dblclick>
+				<enter p1="atom">run_atom_sequence_1</enter>
+				<source>opbm.scriptdata.atoms.atom</source>
+				<foreach>atom</foreach>
+				<listby p1="#name"/>
+			</listbox>
+			<vspacer height="55"/>
+			<label width="350" text="(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;(ampersand)nbsp;Build a Custom Compilation(colon)"/>
+			<compilation name="comp" height="max">
+				<in p1="atom">compilation_in</in>
+			</compilation>
+			<hspacer width="40"/>
+			<vspacer height="200"/>
+			<link text="Run Atom Listing Entry" fontsize="24" height="40">
+				<command p1="atom">run_atom_sequence_1</command>
+			</link>
+			<vspacer height="50"/>
+			<link text="Run Atom(N) Listing Entry(in iteration)" fontsize="24" height="40">
+				<command p1="atom">run_atom_sequence</command>
+			</link>
+			<vspacer height="50"/>
+			<link text="Run Compilation" fontsize="24" height="40">
+				<command>run_compilation</command>
+			</link>
+		</edit>
+
+		<edit name="execute molecules">
+			<precommand p1="Execute Molecules">leftpanel</precommand>
+			<label width="250" text="Molecule Description(colon)"/>
+			<textbox readonly="yes" width="250" field="#name"/>
+			<label width="250" text="Molecule Listing(colon)"/>
+			<listbox name="molecule">
+				<onselect p1="elements">lookupbox_update</onselect>
+				<dblclick p1="molecule">run_molecule_sequence_1</dblclick>
+				<enter p1="molecule">run_molecule_sequence_1</enter>
+				<source>opbm.scriptdata.molecules.molecule</source>
+				<foreach>molecule</foreach>
+				<listby p1="#name"/>
+			</listbox>
+			<label width="250" text="Sequence Description(colon)"/>
+			<textbox readonly="yes" width="250" field="elements.#name"/>
+			<label width="250" text="Sequence of Operations(colon)"/>
+			<lookupbox name="elements" autoupdate="no" height="max">
+				<up>lookupbox_move_up</up>
+				<down>lookupbox_move_down</down>
+				<source relativeto="molecule">[flow,abstract,atom]</source>
+				<foreach>[flow,abstract,atom]</foreach>
+				<relativeedits p1="flow=flows" p2="abstract=abstracts" p3="atom=atoms"/>
+				<relativeoptions p1="flow=opbm.scriptdata.flows.flow" p2="abstract=opbm.scriptdata.abstracts.abstract" p3="atom=opbm.scriptdata.atoms.atom"/>
+				<listby p1="#name"/>
+			</lookupbox>
+			<newcolumn/>
+			<vspacer height="200"/>
+			<link text="Run Molecule Sequence" fontsize="24" height="40">
+				<command p1="molecule">run_molecule_sequence_1</command>
+			</link>
+			<vspacer height="60"/>
+			<link text="Run Molecule(N) Sequence (in iteration)" fontsize="24" height="40">
+				<command p1="molecule">run_molecule_sequence</command>
+			</link>
+		</edit>
+
+		<edit name="execute scenarios">
+			<precommand p1="Execute Scenarios">leftpanel</precommand>
+			<label width="250" text="Scenario Description(colon)"/>
+			<textbox readonly="yes" width="250" field="#name"/>
+			<label width="250" text="Scenario Listing(colon)"/>
+			<listbox name="scenario">
+				<onselect p1="elements">lookupbox_update</onselect>
+				<dblclick p1="scenario">run_scenario_sequence_1</dblclick>
+				<enter p1="scenario">run_scenario_sequence_1</enter>
+				<source>opbm.scriptdata.scenarios.scenario</source>
+				<foreach>scenario</foreach>
+				<listby p1="#name"/>
+			</listbox>
+			<label width="250" text="Sequence Description(colon)"/>
+			<textbox readonly="yes" width="250" field="elements.#name"/>
+			<label width="250" text="Sequence of Operations(colon)"/>
+			<lookupbox name="elements" autoupdate="no" height="max">
+				<up>lookupbox_move_up</up>
+				<down>lookupbox_move_down</down>
+				<source relativeto="scenario">[flow,abstract,atom,molecule]</source>
+				<foreach>[flow,abstract,atom,molecule]</foreach>
+				<relativeedits p1="flow=flows" p2="abstract=abstracts" p3="atom=atoms" p4="molecule=molecules"/>
+				<relativeoptions p1="flow=opbm.scriptdata.flows.flow" p2="abstract=opbm.scriptdata.abstracts.abstract" p3="atom=opbm.scriptdata.atoms.atom" p4="molecule=opbm.scriptdata.molecules.molecule"/>
+				<listby p1="#name"/>
+			</lookupbox>
+			<newcolumn/>
+			<vspacer height="200"/>
+			<link text="Run Scenario Sequence" fontsize="24" height="40">
+				<command p1="scenario">run_scenario_sequence_1</command>
+			</link>
+			<vspacer height="60"/>
+			<link text="Run Scenario(N) Sequence (in iteration)" fontsize="24" height="40">
+				<command p1="scenario">run_scenario_sequence</command>
+			</link>
+		</edit>
+
+		<edit name="execute suites">
+			<precommand p1="Execute Suites">leftpanel</precommand>
+			<label width="250" text="Suite Description(colon)"/>
+			<textbox readonly="yes" width="250" field="#name"/>
+			<label width="250" text="Suite Listing(colon)"/>
+			<listbox name="suite">
+				<onselect p1="elements">lookupbox_update</onselect>
+				<dblclick p1="suite">run_suite_sequence_1</dblclick>
+				<enter p1="suite">run_suite_sequence_1</enter>
+				<source>opbm.scriptdata.suites.suite</source>
+				<foreach>suite</foreach>
+				<listby p1="#name"/>
+			</listbox>
+			<label width="250" text="Sequence Description(colon)"/>
+			<textbox readonly="yes" width="250" field="elements.#name"/>
+			<label width="250" text="Sequence of Operations(colon)"/>
+			<lookupbox name="elements" autoupdate="no" height="max">
+				<up>lookupbox_move_up</up>
+				<down>lookupbox_move_down</down>
+				<source relativeto="suite">[flow,abstract,atom,molecule,scenario]</source>
+				<foreach>[flow,abstract,atom,molecule,scenario]</foreach>
+				<relativeedits p1="flow=flows" p2="abstract=abstracts" p3="atom=atoms" p4="molecule=molecules" p5="scenario=scenarios"/>
+				<relativeoptions p1="flow=opbm.scriptdata.flows.flow" p2="abstract=opbm.scriptdata.abstracts.abstract" p3="atom=opbm.scriptdata.atoms.atom" p4="molecule=opbm.scriptdata.molecules.molecule" p5="scenario=opbm.scriptdata.scenarios.scenario"/>
+				<listby p1="#name"/>
+			</lookupbox>
+			<newcolumn/>
+			<vspacer height="200"/>
+			<link text="Run Suite Sequence" fontsize="24" height="40">
+				<command p1="suite">run_suite_sequence_1</command>
+			</link>
+			<vspacer height="60"/>
+			<link text="Run Suite(N) Sequence (in iteration)" fontsize="24" height="40">
+				<command p1="suite">run_suite_sequence</command>
+			</link>
+		</edit>
+
+	</edits>
+</opbm>
